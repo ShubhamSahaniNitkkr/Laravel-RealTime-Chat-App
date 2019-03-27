@@ -1,0 +1,96 @@
+Steps for Laravel Application----------------
+
+1.check php version by typing php -v
+  if it is 7, then proceed.
+
+reference youlink- https://www.youtube.com/watch?v=jRsTxIEJXTM
+
+2. now install composer , does/nt matter you have already installed it or not
+  commands for download composer
+  A. php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+  B. php -r "if (hash_file('sha384', 'composer-setup.php') === '48e3236262b34d30969dca3c37281b3b4bbe3221bda826ac6a9a62d6444cdb0dcd0615698a5cbe587c3f0fe57a54d8f5') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
+  C. sudo php composer-setup.php
+  D. sudo php -r "unlink('composer-setup.php');"
+
+3. confirm it by typing composer on terminal
+
+4. move to the folder where you want to put your laravel project
+  Recommended to put in htdocs of XAMPP
+
+5. then type
+  composer create-project laravel/laravel blog  "5.5.*" --prefer-dist
+
+6. move inside your project folder
+
+NOTE : go to htdocs then your folder and change permission for that and apply to all their inclosing folder.
+
+7. start Apache server and tyoe localhost/projectname/public
+ screen comes with laravel written on it.
+
+--------------------------------------
+
+
+ Steps for mysql connection with Laravel Application----------------
+1. go to your laravel folder , open .env file
+  change
+
+  DB_CONNECTION=mysql
+  DB_HOST=127.0.0.1
+  DB_PORT=3306
+  DB_DATABASE=chatApp  <-----your database name
+  DB_USERNAME=root     <----- your username bydefault it is root for localsystem
+  DB_PASSWORD=         <----- your password bydefault it is blank for localsystem
+
+2. go to config folder then database.php and edit
+
+'mysql' => [
+    'driver' => 'mysql',
+    'host' => env('DB_HOST', '127.0.0.1'),
+    'port' => env('DB_PORT', '3306'),
+    'database' => env('DB_DATABASE', 'chatApp'),<----your database name
+    'username' => env('DB_USERNAME', 'root'), <----- your username bydefault it is root
+    'password' => env('DB_PASSWORD', ''), <----- your password bydefault it is blank for localsystem
+    'unix_socket' => env('DB_SOCKET', ''),
+    'charset' => 'utf8mb4',
+    'collation' => 'utf8mb4_unicode_ci',
+    'prefix' => '',
+    'strict' => true,
+    'engine' => null,
+],
+
+
+--------------------------------------
+
+php artisan migrate --->>>to put changes in the schmea( like sting length etc.)
+php artisan key:generate ---->if you are getting key permission error
+php artisan config:cache ---> to clear the cache
+
+sudo npm instal --->to install npm
+
+npm install font-awesome --save ------->to install font-awesome
+
+
+
+-----------------
+to create dummy data
+go to database factory and change userFactory.php
+and then -->php artisan tinker
+then --> factory('App\User',30)->create();
+
+
+----
+to make table let say friends
+php artisan make:model friend -a
+
+here -a will make model,and migration file ,factory file and controller file
+
+----
+
+
+factory file is used for dummy data for developemnt purposes
+----
+
+
+to use vue js file first run this commands
+npm run watch
+----
