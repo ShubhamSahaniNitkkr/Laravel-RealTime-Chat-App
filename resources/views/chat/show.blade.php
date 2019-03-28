@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+  <audio id="ChatAudio">
+    <source src="https://notificationsounds.com/notification-sounds/slow-spring-board-570/download/mp3">
+  </audio>
   <meta name="friendId" content="{{ $friend->id }}">
 
   <div class="container py-5">

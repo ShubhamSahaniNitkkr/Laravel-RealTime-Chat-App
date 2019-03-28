@@ -17,11 +17,13 @@ window.Vue = require('vue');
 
 Vue.component('chat', require('./components/Chat.vue').default);
 Vue.component('chat-composer', require('./components/ChatComposer.vue').default);
+Vue.component('onlineuser', require('./components/OnlineUsers.vue').default);
 
 const app = new Vue({
     el: '#app',
     data:{
-      chats:''
+      chats:'',
+      onlineUsers:''
     },
     created(){
       const userId = $('meta[name="usrId"]').attr('content');
@@ -33,8 +35,22 @@ const app = new Vue({
         });
 
         Echo.private('Chat.'+friendId+'.'+userId).listen('BroadcastChat',(e) => {
-            this.chats.push(e);
+            document.getElementById('ChatAudio').play();
+            this.chats.push(e.chat);
           });
+
+      }
+      if(userId!=null){
+        Echo.join('Online')
+          .here((users) =>{
+            this.onlineUsers=users;
+          })
+          .joining((user)=>{
+            this.onlineUsers.push(user);
+          })
+          .leaving((user) =>{
+            this.onlineUsers = this.onlineUsers.filter((u) => {u!=user});
+          })
 
       }
     }

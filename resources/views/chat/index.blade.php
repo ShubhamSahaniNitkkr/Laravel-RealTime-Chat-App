@@ -6,7 +6,7 @@
   <table class="table table-bordered py-4 table-hover">
   <thead>
     <tr class="h2 text-primary text-center">
-      <td>
+      <td colspan="2">
         <i class="fas fa-users text-primary"></i> List of Friends
       </td>
     </tr>
@@ -14,8 +14,17 @@
   <tbody>
     @forelse ($friend as $frien)
       <tr>
-        <td class="h3"><i class="fas fa-user-circle"></i>  <a href="{{ route('chat.show',$frien->id) }}">{{$frien->name}}</a> </td>
+        <td class="h3">
+          <i class="fas fa-user-circle"></i>  <a href="{{ route('chat.show',$frien->id) }}">{{$frien->name}}</a>
+        </td>
+        <td>
+          <onlineuser
+           v-bind:friend="{{ $frien }}"
+           v-bind:onlineusers="onlineUsers">
+         </onlineuser>
+        </td>
       </tr>
+
      @empty
        <tr>
          <td>You don't have any friends! <i class="fas fa-exclamation-triangle text-danger"></i> </td>
