@@ -2,9 +2,10 @@
 
 </style>
 <template>
-    <div class="container text-right">
-      <input type="text" class="input" v-model="chat" v-on:keyup.enter="sendChat">
-      <input type="button" class="button" value="Send" v-on:click="sendChat">
+
+    <div class="container text-right shadow-sm p-3 mb-5  rounded alert alert-secondary ">
+      <input type="text" class="form-control" v-model="chat" v-on:keyup.enter="sendChat" placeholder="Type Your mesaage here ..">
+      <!-- <input type="button" class="btn btn-success" value="Send" v-on:click="sendChat"> -->
     </div>
 </template>
 

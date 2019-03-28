@@ -3,19 +3,34 @@
 @section('content')
 
   <div class="container py-4">
-  <table class="table table-bordered py-4 table-hover">
-  <thead>
-    <tr class="h2 text-primary text-center">
-      <td colspan="2">
-        <i class="fas fa-users text-primary"></i> List of Friends
+    <br>
+    <br>
+  <table class="table table-bordered py-4 table-hover col-md-10 mx-auto shadow-sm p-3 mb-5 bg-white rounded text-center table-striped table-condensed">
+  <thead >
+    <tr class="text-info text-center h3 bg-light">
+      <td colspan="4">
+        <a class="btn btn-outline-primary h3 btn-lg" href="{{url('/home')}}"> <i class="fas fa-users text-info "></i> Friends</a>
       </td>
+    </tr>
+
+    <tr class="text-info text-center">
+      <td>#</td>
+      <td>Name</td>
+      <td>Click to chat</td>
+      <td>Status</td>
     </tr>
   </thead>
   <tbody>
     @forelse ($friend as $frien)
       <tr>
-        <td class="h3">
-          <i class="fas fa-user-circle"></i>  <a href="{{ route('chat.show',$frien->id) }}">{{$frien->name}}</a>
+        <td>
+          <i class="fas fa-user-circle text-info"></i>
+        </td>
+        <td>
+           <a href="{{ route('chat.show',$frien->id) }}">{{$frien->name}} </a>
+        </td>
+        <td class="text-success">
+          <a href="{{ route('chat.show',$frien->id) }}"><i class="fas fa-comments"></i> Chat </a>
         </td>
         <td>
           <onlineuser
