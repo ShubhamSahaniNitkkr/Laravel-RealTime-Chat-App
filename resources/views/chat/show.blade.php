@@ -14,8 +14,10 @@
       <tbody>
     </tbody>
     </table>
-    <chat v-bind:chats="chats"></chat>
-    
+    <chat v-bind:chats="chats" v-bind:userid="{{ Auth::user()->id }}"
+      v-bind:friendid="{{ $friend->id }}"></chat>
+
+
 
   </div>
 

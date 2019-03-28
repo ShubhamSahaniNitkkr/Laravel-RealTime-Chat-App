@@ -16,6 +16,7 @@ window.Vue = require('vue');
  */
 
 Vue.component('chat', require('./components/Chat.vue').default);
+Vue.component('chat-composer', require('./components/ChatComposer.vue').default);
 
 const app = new Vue({
     el: '#app',
@@ -23,13 +24,18 @@ const app = new Vue({
       chats:''
     },
     created(){
-      const userId = $('meta[name="userId"]').attr('content');
+      const userId = $('meta[name="usrId"]').attr('content');
       const friendId = $('meta[name="friendId"]').attr('content');
 
       if(friendId != undefined){
-        axios.post('/chat/getChat/' + friendId).then((response) => {
+        axios.post('/chat/getChat/'+ friendId).then((response) => {
           this.chats=response.data;
-        })
+        });
+
+        Echo.private('Chat.'+friendId+'.'+userId).listen('BroadcastChat',(e) => {
+            this.chats.push(e);
+          });
+
       }
     }
 });

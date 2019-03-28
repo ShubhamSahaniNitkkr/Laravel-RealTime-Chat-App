@@ -4,7 +4,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="userId" content="{{ Auth ::check() ? Auth::user()->id : 'null' }}"
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -17,6 +16,7 @@
     <!-- Latest compiled and minified CSS -->
 </head>
 <body>
+  <meta name="usrId" content="{{ Auth ::check() ? Auth::user()->id : 'null' }}">
     <div id="app">
 
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
